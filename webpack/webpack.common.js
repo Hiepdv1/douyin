@@ -16,12 +16,11 @@ module.exports = {
                     {
                         loader: 'babel-loader',
                     },
-
                 ]
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', "css-loader"]
+                use: ['style-loader', "css-loader", "postcss-loader"]
             },
             {
                 test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
@@ -38,6 +37,9 @@ module.exports = {
         filename: 'bundle.js'
     },
     mode: 'development',
+    devServer: {
+        historyApiFallback: true,
+    },
     plugins: [
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, '..', './public/index.html'),
